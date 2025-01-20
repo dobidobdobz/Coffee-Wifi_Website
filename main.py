@@ -14,9 +14,6 @@ import os
 
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
-cache = Cache(app)
-cache.clear()
-
 # starting flask server
 app = Flask(__name__)
 app.config['SECRET_KEY'] = SECRET_KEY
