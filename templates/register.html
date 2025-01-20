@@ -46,7 +46,7 @@
             <div class="text-center page-section">
             <h2 class="section-heading text-uppercase">ADD DETAILS BELOW</h2>
             </div>
-            {% from 'bootstrap' import render_form %}
+            {% from 'bootstrap5/form.html' import render_form %}
             {{ render_form(form, novalidate=True) }}
         </div>
 
