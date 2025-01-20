@@ -18,7 +18,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 app = Flask(__name__)
 app.config['SECRET_KEY'] = SECRET_KEY
 # This line integrates Bootstrap 5 into the Flask application using a Flask extension
-Bootstrap(app)
+bootstrap = Bootstrap(app)
 # This line integrates the CKEditor rich text editor into the Flask application
 ckeditor = CKEditor(app)
 
