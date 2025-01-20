@@ -10,7 +10,6 @@ from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 from sqlalchemy import Integer, String, Boolean
 from werkzeug.security import generate_password_hash, check_password_hash
 import os
-from flask_caching import Cache
 
 
 SECRET_KEY = os.environ.get("SECRET_KEY")
