@@ -1,5 +1,5 @@
-from flask import Flask, render_template, request, redirect, url_for, flash
-from flask_bootstrap import Bootstrap
+from flask import Flask, render_template, request, redirect, url_for, flash, render_form
+from flask_bootstrap import Bootstrap, Bootstrap.render_form
 from flask_wtf import FlaskForm
 from flask_login import LoginManager, UserMixin, current_user, login_user, logout_user, login_required
 from wtforms import StringField, SubmitField, BooleanField, PasswordField, EmailField
