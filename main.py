@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
-from flask_bootstrap import Bootstrap
+from flask_bootstrap import Bootstrap5
 from flask_wtf import FlaskForm
 from flask_login import LoginManager, UserMixin, current_user, login_user, logout_user, login_required
 from wtforms import StringField, SubmitField, BooleanField, PasswordField, EmailField
@@ -18,7 +18,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 app = Flask(__name__)
 app.config['SECRET_KEY'] = SECRET_KEY
 # This line integrates Bootstrap 5 into the Flask application using a Flask extension
-bootstrap = Bootstrap(app)
+Bootstrap5(app)
 # This line integrates the CKEditor rich text editor into the Flask application
 ckeditor = CKEditor(app)
 
