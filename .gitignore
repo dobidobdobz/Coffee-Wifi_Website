@@ -1,0 +1,36 @@
+# Ignore Python bytecode files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore virtual environments (adjust if you are using a specific virtual environment folder name)
+venv/
+env/
+.venv/
+
+# Ignore IDE-related files (PyCharm)
+.idea/
+
+# Ignore operating system-related files
+.DS_Store      # macOS
+Thumbs.db      # Windows
+
+# Ignore logs and temp files
+*.log
+*.bak
+*.swp
+
+# Ignore .env or other config files that contain sensitive info
+.env
+
+# Ignore database files (if any)
+*.sqlite3
+
+# Ignore coverage reports if using coverage tools
+.coverage
+
+# Ignore build artifacts and package management files
+build/
+dist/
+*.egg-info/

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Agency - Start Bootstrap Theme</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="static/assets/cup-hot-fill.svg" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="static/css/styles.css" rel="stylesheet" />
+        <style>
+            .icon {
+            background-color: #ffc800;
+            color: white;
+            width: 40%;
+            border-radius: 10%;
+            }
+
+        </style>
+    </head>
+    <body id="page-top">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+            <div class="container">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars ms-1"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+                        <li class="nav-item"><a class="nav-link" href="#portfolio">Cafes</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#services">About</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ url_for('login') }}">Login</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ url_for('register') }}">Register</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ url_for('logout') }}">Log-out</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Masthead-->
+        <header class="masthead">
+            <div class="container">
+                {% if current_user %}
+                <div class="masthead-subheading">Welcome {{ current_user.name }} to</div>
+                {% else %}
+                <div class="masthead-subheading">Welcome to</div>
+                {% endif %}
+                <div class="masthead-heading text-uppercase">COFFEE & WIFI</div>
+                <div class="masthead-subheading">A collection of London Coffee shops for remote work</div>
+            </div>
+        </header>
+
+        <!-- Portfolio Grid-->
+
+        <section class="page-section bg-light" id="portfolio" style="background-color: #F8EDE3;">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase">Cafes</h2>
+                    <h3 class="section-subheading text-muted">Below you will find all the cafes listed in the London area! <br> register or login if you would like to add A new cafe to the Database or see about section!</h3>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 col-sm-6 mb-4">
+                        {% for cafe in cafes %}
+                        <!-- Portfolio item 1-->
+                        <div class="portfolio-item">
+                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal{{ cafe.id }}">
+                                <div class="portfolio-hover">
+                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                                </div>
+                                <img class="img-fluid" src="{{ cafe.img_url }}" alt="..." />
+                            </a>
+                            <div class="portfolio-caption">
+                                <div class="portfolio-caption-heading">{{ cafe.name }}</div>
+                                <div class="portfolio-caption-subheading text-muted">{{ cafe.location }}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 mb-4">
+                    {% endfor %}
+
+            </div>
+            <div style="display: flex; justify-content: center; align-items: center; height: 150px; border: 0px solid #ccc;">
+                <a class="btn btn-primary btn-xl text-uppercase" href="{{ url_for('add_coffee_shop')}}" >Add New Coffee Shop</a>
+            </div>
+        </section>
+
+        <!-- Services-->
+        <section class="page-section" id="services">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase">About</h2>
+                    <h3 class="section-subheading text-muted">
+                        This is a collection of coffee shops around london where you could potentially grab a cup of coffee and do some remote work.
+                        The idea is that you could contribute to the project by logining in and adding new coffee shops to the database, edit existing ones,
+                        and give more information and rating about the coffee shop places you have visited!
+                    </h3>
+                </div>
+                <div class="row text-center">
+                    <div class="col-md-4">
+                        <span class="fa-stack fa-4x icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="1.7em" height="2em" fill="currentColor" class="bi bi-r-circle" viewBox="0 0 16 16">
+                                <path d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.5 4.002h3.11c1.71 0 2.741.973 2.741 2.46 0 1.138-.667 1.94-1.495 2.24L11.5 12H9.98L8.52 8.924H6.836V12H5.5zm1.335 1.09v2.777h1.549c.995 0 1.573-.463 1.573-1.36 0-.913-.596-1.417-1.537-1.417z"/>
+                            </svg>
+                        </span>
+                        <h4 class="my-3">Sign-up or login</h4>
+                        <p class="text-muted">Sign-up or login if registered. If you would like to contribute to the website and database to add your own cafe's first you must register with email and password!</p>
+                    </div>
+                    <div class="col-md-4">
+                        <span class="fa-stack fa-4x icon">
+
+                            <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="2em" fill="currentColor" class="bi bi-cup-hot-fill" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M.5 6a.5.5 0 0 0-.488.608l1.652 7.434A2.5 2.5 0 0 0 4.104 16h5.792a2.5 2.5 0 0 0 2.44-1.958l.131-.59a3 3 0 0 0 1.3-5.854l.221-.99A.5.5 0 0 0 13.5 6zM13 12.5a2 2 0 0 1-.316-.025l.867-3.898A2.001 2.001 0 0 1 13 12.5"/>
+                                <path d="m4.4.8-.003.004-.014.019a4 4 0 0 0-.204.31 2 2 0 0 0-.141.267c-.026.06-.034.092-.037.103v.004a.6.6 0 0 0 .091.248c.075.133.178.272.308.445l.01.012c.118.158.26.347.37.543.112.2.22.455.22.745 0 .188-.065.368-.119.494a3 3 0 0 1-.202.388 5 5 0 0 1-.253.382l-.018.025-.005.008-.002.002A.5.5 0 0 1 3.6 4.2l.003-.004.014-.019a4 4 0 0 0 .204-.31 2 2 0 0 0 .141-.267c.026-.06.034-.092.037-.103a.6.6 0 0 0-.09-.252A4 4 0 0 0 3.6 2.8l-.01-.012a5 5 0 0 1-.37-.543A1.53 1.53 0 0 1 3 1.5c0-.188.065-.368.119-.494.059-.138.134-.274.202-.388a6 6 0 0 1 .253-.382l.025-.035A.5.5 0 0 1 4.4.8m3 0-.003.004-.014.019a4 4 0 0 0-.204.31 2 2 0 0 0-.141.267c-.026.06-.034.092-.037.103v.004a.6.6 0 0 0 .091.248c.075.133.178.272.308.445l.01.012c.118.158.26.347.37.543.112.2.22.455.22.745 0 .188-.065.368-.119.494a3 3 0 0 1-.202.388 5 5 0 0 1-.253.382l-.018.025-.005.008-.002.002A.5.5 0 0 1 6.6 4.2l.003-.004.014-.019a4 4 0 0 0 .204-.31 2 2 0 0 0 .141-.267c.026-.06.034-.092.037-.103a.6.6 0 0 0-.09-.252A4 4 0 0 0 6.6 2.8l-.01-.012a5 5 0 0 1-.37-.543A1.53 1.53 0 0 1 6 1.5c0-.188.065-.368.119-.494.059-.138.134-.274.202-.388a6 6 0 0 1 .253-.382l.025-.035A.5.5 0 0 1 7.4.8m3 0-.003.004-.014.019a4 4 0 0 0-.204.31 2 2 0 0 0-.141.267c-.026.06-.034.092-.037.103v.004a.6.6 0 0 0 .091.248c.075.133.178.272.308.445l.01.012c.118.158.26.347.37.543.112.2.22.455.22.745 0 .188-.065.368-.119.494a3 3 0 0 1-.202.388 5 5 0 0 1-.252.382l-.019.025-.005.008-.002.002A.5.5 0 0 1 9.6 4.2l.003-.004.014-.019a4 4 0 0 0 .204-.31 2 2 0 0 0 .141-.267c.026-.06.034-.092.037-.103a.6.6 0 0 0-.09-.252A4 4 0 0 0 9.6 2.8l-.01-.012a5 5 0 0 1-.37-.543A1.53 1.53 0 0 1 9 1.5c0-.188.065-.368.119-.494.059-.138.134-.274.202-.388a6 6 0 0 1 .253-.382l.025-.035A.5.5 0 0 1 10.4.8"/>
+                            </svg>
+                        </span>
+                        <h4 class="my-3">Add New Cafe</h4>
+                        <p class="text-muted">Once Logged in, you should now have access to the the add new cafe page after you press the "ADD NEW COFFEE SHOP"!</p>
+                    </div>
+                    <div class="col-md-4">
+                        <span class="fa-stack fa-4x icon">
+                            <!-- Bootstrap SVG icon -->
+                            <svg xmlns="http://www.w3.org/2000/svg" width="1.7em" height="2em" fill="currentColor" class="bi bi-database-fill-add" viewBox="0 0 16 16">
+                                <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0M8 1c-1.573 0-3.022.289-4.096.777C2.875 2.245 2 2.993 2 4s.875 1.755 1.904 2.223C4.978 6.711 6.427 7 8 7s3.022-.289 4.096-.777C13.125 5.755 14 5.007 14 4s-.875-1.755-1.904-2.223C11.022 1.289 9.573 1 8 1"/>
+                                <path d="M2 7v-.839c.457.432 1.004.751 1.49.972C4.722 7.693 6.318 8 8 8s3.278-.307 4.51-.867c.486-.22 1.033-.54 1.49-.972V7c0 .424-.155.802-.411 1.133a4.51 4.51 0 0 0-4.815 1.843A12 12 0 0 1 8 10c-1.573 0-3.022-.289-4.096-.777C2.875 8.755 2 8.007 2 7m6.257 3.998L8 11c-1.682 0-3.278-.307-4.51-.867-.486-.22-1.033-.54-1.49-.972V10c0 1.007.875 1.755 1.904 2.223C4.978 12.711 6.427 13 8 13h.027a4.55 4.55 0 0 1 .23-2.002m-.002 3L8 14c-1.682 0-3.278-.307-4.51-.867-.486-.22-1.033-.54-1.49-.972V13c0 1.007.875 1.755 1.904 2.223C4.978 15.711 6.427 16 8 16c.536 0 1.058-.034 1.555-.097a4.5 4.5 0 0 1-1.3-1.905"/>
+                            </svg>
+                        </span>
+                        <h4 class="my-3">Submit Shop Info</h4>
+                        <p class="text-muted">Once on the ADD NEW COFFEE SHOP PAGE, you must fill out all the appropriate Entry-fields and submit the data! look for your addition to the page in the home screen.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer-->
+        <footer class="footer py-4">
+            <div class="container">
+                <a style="padding: 1.5rem;" >created by dobidobdobz</a>
+                <br>
+                <br>
+                <div class="row align-items-center">
+                    <div class="col-lg-4 text-lg-start"></div>
+                    <div class="col-lg-4 my-3 my-lg-0">
+                        <a class="btn btn-dark btn-social mx-2" href="https://dobripopov.online/" aria-label="Website"><i class="fa fa-desktop"></i></a>
+                        <a class="btn btn-dark btn-social mx-2" href="https://github.com/dobidobdobz" aria-label="Github"><i class="fab fa-github"></i></a>
+                        <a class="btn btn-dark btn-social mx-2" href="https://www.instagram.com/dobri_todorov_popov/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a class="btn btn-dark btn-social mx-2" href="https://www.linkedin.com/in/dobri-popov-615514213/" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Portfolio Modals-->
+
+        {% for cafe in cafes %}
+        <!-- Portfolio item 1 modal popup-->
+        <div class="portfolio-modal modal fade" id="portfolioModal{{ cafe.id }}" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="close-modal" data-bs-dismiss="modal"><img src="static/assets/img/close-icon.svg" alt="Close modal" /></div>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="modal-body">
+                                    <!-- Project details-->
+                                    <h2 class="text-uppercase">{{ cafe.name }}</h2>
+                                    <p class="item-intro text-muted">{{ cafe.location }}</p>
+                                    <img class="img-fluid d-block mx-auto" src="{{ cafe.img_url }}" alt="..." />
+                                    <p></p>
+                                    <ul class="list-inline">
+                                        <li>
+                                            <strong>Cafe Name:</strong>
+                                             {{ cafe.name }}
+                                        </li>
+                                        <li>
+                                            <strong>District / Neighborhood:</strong>
+                                             {{ cafe.location }}
+                                        </li>
+                                        <li>
+                                            <strong>Google maps link:</strong>
+                                              <a href="{{ cafe.map_url }}">click here</a>
+                                        </li>
+                                        <li>
+                                            <strong>Power-sockets:</strong>
+                                            {{ cafe.has_sockets }}
+                                        </li>
+                                        <li>
+                                            <strong>WC:</strong>
+                                              {{ cafe.has_toilet }}
+                                        </li>
+                                        <li>
+                                            <strong>Wifi:</strong>
+                                              {{ cafe.has_wifi }}
+                                        </li>
+                                        <li>
+                                            <strong>Comfortable to take calls:</strong>
+                                            {{ cafe.can_take_calls }}
+                                        </li>
+                                        <li>
+                                            <strong>Number of seats:</strong>
+                                            {{ cafe.seats }}
+                                        </li>
+                                        <li>
+                                            <strong>Price of coffee:</strong>
+                                             {{ cafe.coffee_price }}
+                                        </li>
+                                    </ul>
+                                    <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
+                                        <i class="fas fa-xmark me-1"></i>
+                                        Close Project
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        {% endfor %}
+
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+    </body>
+</html>
