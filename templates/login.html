@@ -52,6 +52,7 @@
             {% endif %}
             {% endwith %}
             </div>
+            {% from bootstrap import render_form %}
             {{ render_form(form, novalidate=True) }}
         </div>
 
