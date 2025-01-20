@@ -44,6 +44,7 @@
             <div class="text-center page-section">
             <h2 class="section-heading text-uppercase">Add New Cafe</h2>
             </div>
+            {% from bootstrap import render_form %}
             {{ render_form(form, novalidate=True) }}
         </div>
 
