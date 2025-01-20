@@ -46,8 +46,20 @@
             <div class="text-center page-section">
             <h2 class="section-heading text-uppercase">ADD DETAILS BELOW</h2>
             </div>
+            
             {% from "bootstrap5/form.html" import render_form %}
             {{ render_form(form, novalidate=True) }}
+            
+            <form method="POST" novalidate>
+                    {{ form.hidden_tag() }}
+                <div class="form-group">
+                    {{ form.username.label }} 
+                    {{ form.username(class="form-control") }}
+                </div>
+                <div class="form-group">
+                    {{ form.submit(class="btn btn-primary") }}
+                </div>
+            </form>
         </div>
 
         <!-- Footer-->
