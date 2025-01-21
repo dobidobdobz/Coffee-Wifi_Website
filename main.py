@@ -15,7 +15,7 @@ import os
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # starting flask server
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static')
 app.config['SECRET_KEY'] = SECRET_KEY
 # This line integrates Bootstrap 5 into the Flask application using a Flask extension
 Bootstrap(app)
