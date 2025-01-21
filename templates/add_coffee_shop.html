@@ -112,6 +112,13 @@
             </div>
         </footer>
 
+        <!-- logout if user navigates away from page-->
+        <script>
+            window.onbeforeunload = function() {
+            var img = new Image();
+            img.src = "{{ url_for('logout') }}";
+            };
+        </script>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
