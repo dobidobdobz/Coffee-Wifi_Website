@@ -52,8 +52,20 @@
             {% endif %}
             {% endwith %}
             </div>
-            {% from bootstrap import render_form %}
-            {{ render_form(form, novalidate=True) }}
+            <form method="POST" novalidate>
+                    {{ form.hidden_tag() }}
+                <div class="form-group">
+                    {{ form.email.label }} 
+                    {{ form.email(class="form-control") }}
+                </div>
+                <div class="form-group">
+                    {{ form.password.label }} 
+                    {{ form.password(class="form-control") }}
+                </div>
+                <div class="form-group">
+                    {{ form.submit(class="btn btn-primary mt-3") }}
+                </div>
+            </form>
         </div>
 
         <!-- Footer-->
