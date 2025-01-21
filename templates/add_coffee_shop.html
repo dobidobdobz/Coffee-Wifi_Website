@@ -63,23 +63,27 @@
                     {{ form.location(class="form-control mt-3") }}
                 </div>
                 <div class="form-group">
-                    {{ form.has_sockets.label }} 
-                    {{ form.has_sockets(class="form-control mt-3") }}
-                </div>
-                <div class="form-group">
-                    {{ form.has_toilet.label }} 
                     {{ form.has_toilet(class="form-check-input") }}
+                    {{ form.has_sockets.label }} 
+                    
                 </div>
                 <div class="form-group">
-                    {{ form.has_wifi.label }} 
+                    {{ form.has_toilet(class="form-check-input") }}
+                    {{ form.has_toilet.label }} 
+                    
+                </div>
+                <div class="form-group">
                     {{ form.has_wifi(class="form-check-input") }}
+                    {{ form.has_wifi.label }} 
+                    
                 </div>
                 <div class="form-group">
-                    {{ form.can_take_calls.label }} 
                     {{ form.can_take_calls(class="form-check-input") }}
+                    {{ form.can_take_calls.label }} 
+                    
                 </div>
                 <div class="form-group">
-                    {{ form.seats.label }} 
+                    {{ form.seats.label (class='mt-5')}} 
                     {{ form.seats(class="form-control mt-3") }}
                 </div>
                 <div class="form-group">
